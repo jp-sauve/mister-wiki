@@ -7,30 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link href="/mister-wiki/css/normalize.css" rel="stylesheet" media="all">
     <link href="/mister-wiki/css/style.css" rel="stylesheet" media="all">
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
     <!--[if lt IE 9]><script src="/mister-wiki/js/html5shiv-printshiv.js" media="all"></script><![endif]-->
 
 </head>
 
 <body>
     <header role="banner">
-        <h1>Main Title</h1>
-        <nav role="navigation">
-
-        </nav>
-    </header>
-
     <div class="wrap">
-        <main role="main">
-
+    <div id="name" class="ib">
+        <h1>Mister Wiki</h1>
+    </div>
+    <div id="searchform" class="ib">
+    <form name="sform">
+    <input type="text" id="searchterms" name="searchterms" autocomplete="on" autofocus>
+    <button type="submit" id="searchbtn">Do</button>
+    <form method="POST" action="https://en.wikipedia.org/wiki/Special:Random">
+    <button type="submit">?</button>
+    </form>
+    </div>
+    </div id="content">
+    </header>
+        <main role="main" id="main">
+        <div id="splash">
+       <h2>What interests you?</h2><br>
+       Enter your search above, and do it!
+        </div>
         </main>
     </div>
 
     <footer role="contentinfo">
-        <address>
+        <div class="ib"><address>
           <p>For further information, please contact <a href="mailto:jean-paul@grokology.ca">JP Sauve</a>.</p>
-        </address>
+        </address></div>
+        <div class="ib">
         <small>Copyright &copy; <time datetime="2017">2017</time></small>
+        </div>
     </footer>
 
 </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        
+    <script src="/mister-wiki/js/script.js"></script>
 </html>
