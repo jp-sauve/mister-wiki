@@ -86,8 +86,8 @@ function ajaxErr(err) {
 
 $(document).ready(function() {
     var terms = "";
-$('#searchbtn').click(function(){
-    event.preventDefault();
+$('#searchbtn').click(function(evt){
+    evt.preventDefault();
     console.log("Accepted " + $( "#searchterms" ).val() + " as input.");
     sObj.data.gsrsearch = $( "#searchterms" ).val()||defaultSearch;
     console.log("Searching with object:" + JSON.stringify(sObj));
