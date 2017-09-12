@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Grokology :: mister-wiki</title>
-    <meta name="description" content="PROJECT INFO">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link href="/mister-wiki/css/normalize.css" rel="stylesheet" media="all">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="PROJECT INFO">
+    <title>Grokology :: mister-wiki</title>
+  <!--  <link href="/mister-wiki/css/normalize.css" rel="stylesheet" media="all"> -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="/mister-wiki/css/style.css" rel="stylesheet" media="all">
     <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
     <!--[if lt IE 9]><script src="/mister-wiki/js/html5shiv-printshiv.js" media="all"></script><![endif]-->
@@ -22,18 +25,18 @@
     <form name="sform">
     <input type="text" id="searchterms" name="searchterms" autocomplete="on" autofocus>
     <button type="submit" id="searchbtn">Do</button>
-    <form method="POST" action="https://en.wikipedia.org/wiki/Special:Random">
-    <button type="submit">?</button>
-    </form>
+    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-random" aria-hidden="true" aria-label="Random Search"></span></a>
     </div>
     </div id="content">
     </header>
+        <div id="container">
         <main role="main" id="main">
         <div id="splash">
        <h2>What interests you?</h2><br>
        Enter your search above, and do it!
         </div>
         </main>
+        </div>
     </div>
 
     <footer role="contentinfo">
@@ -48,6 +51,24 @@
 </body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.88/jsrender.min.js"></script>
+        <script id="listTemplate" type="text/x-jsrender">
+            <a href=" {{:canonicalurl}} " target="_blank">
+                <li>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-9" id="nameBox"><div class="name"><h1> {{:title}} </h1></div></div>
+                        <div class="wikiimage col-xs-12 col-md-3"><img class="thumbnail" src={{:thumbnail.source}} /></div>
+                        </div>
+                        <div class="row">
+                        <div class="blurb col-xs-12"> {{:extract }}</div>
+                    </div>
+                </li>
+            </a>
+
+
+
+
+        </script>
     <script src="/mister-wiki/js/script.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </html>

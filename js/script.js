@@ -10,7 +10,9 @@ var endPoint = "https://en.wikipedia.org/w/api.php?",
     actionProp = "query",
     srsearchProp = "",
     listProp = "search",
-    defaultSearch = "Linux";
+    defaultSearch = "Linux",
+    tmpl = $.templates("#listTemplate");
+    
     /*
     sObj = new (function () {
         "use strict";
@@ -59,23 +61,28 @@ function wikiSearch(sObj) {
 function processResults(results) {
     "use strict";
     var resultList = "";
-    var mainimage;
+    var mainimage="";
     results.query.pages.sort(function(a,b){
         var first = parseInt(a.index,10);
         var second = parseInt(b.index,10);
         return first-second;
     });
+
+
+
     $.each(results.query.pages,function(index,obj){
-        mainimage="https://upload.wikimedia.org/wikipedia/commons/6/6d/No_image.png";
-        var shove = "";
-        if (obj.hasOwnProperty('thumbnail')) {
-            mainimage=obj.thumbnail.source;
-            shove = "shove";
+        if (!obj.hasOwnProperty('thumbnail')) {
+            console.log("No image. Setting default.\n");
+            console.log(JSON.stringify(obj, null, '\t'));
+            obj["thumbnail"] = {};
+            console.log(JSON.stringify(obj, null, '\t'));
+            obj.thumbnail["source"]="data/Noimage.svg";
+            obj.thumbnail["width"]=50;
         }
-        resultList += '<a href="'+obj.canonicalurl+'" target="_blank"><li><div class="resultHead"><div class="wikiimage ib"><img src="' +mainimage+ '" /></div><div class="name ib">' + obj.title + '</div></div><div class="blurb ' + shove + '">' + obj.extract + '</div></li></a>';
+        resultList += tmpl.render(obj);
 
     });
-    console.log('title ' + JSON.stringify(results, null, '\t'));
+   console.log('-------RESULTS-------\n ' + JSON.stringify(results, null, '\t'));
     
     $('#main').html('<ul>'+resultList+'</ul>');
 }
@@ -92,6 +99,9 @@ $('#searchbtn').click(function(evt){
     sObj.data.gsrsearch = $( "#searchterms" ).val()||defaultSearch;
     console.log("Searching with object:" + JSON.stringify(sObj));
     wikiSearch(sObj);
+});
+$('#randomButton').click(function(evt){
+    
 });
 });
 //wikiSearch(sObj);
