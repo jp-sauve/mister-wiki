@@ -16,8 +16,8 @@ a:active { color:#fb0e02; }
       background-color: #222;
       color: #EFE;
     }
-    #content {
-  
+    img {
+      margin:auto;
     }
     header {
       background-color: #111;
@@ -35,18 +35,19 @@ a:active { color:#fb0e02; }
     }
     .wikiimage {
       vertical-align: middle;
-    }
-    .resultHead {
+      clear: left;
     }
     .name {
       font-size: 1.5em;
       font-weight: bold;
-      padding-left: 2em;
+      text-align: center;
     }
     #searchform {
      padding: 0em 1em; 
     }
-
+    #nameBox {
+      float: right;
+    }
 #searchbtn {
   -moz-box-shadow: inset 0px 1px 0px 0px #f9eca0;
   -webkit-box-shadow: inset 0px 1px 0px 0px #f9eca0;
